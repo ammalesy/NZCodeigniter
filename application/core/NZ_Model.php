@@ -7,13 +7,6 @@ class NZ_Model extends CI_Model {
                 parent::__construct();
                 $this->load->database();
         }
-        public function props()
-        {
-                return array();
-        }
-        public function tableName(){
-        	return "";
-        }
         public function get($row=0)
         {
                 if ($row == 0) {
@@ -43,6 +36,21 @@ class NZ_Model extends CI_Model {
         {
                 $this->db->delete($this->tableName(), $conditions);
         }
+        private function tableName()
+        {
+                return strtolower(get_class($this));
+        }
+        private function props()
+        {
+                $properties = array();
+                $result = get_object_vars($this);
+                $i = 0;
+                foreach ($result as $key => $value) {
+                     $properties[$i] = $key;
+                     $i++;
+                }
+                return $properties;
+        }
         private function unsetPropIfNull(){
                 foreach ($this->props() as $key => $value) {
                         if ($this->$value == NULL) {
@@ -50,5 +58,6 @@ class NZ_Model extends CI_Model {
                         }
                 }
         }
+
 
 }

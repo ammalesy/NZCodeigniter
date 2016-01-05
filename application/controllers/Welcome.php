@@ -31,8 +31,7 @@ class Welcome extends CI_Controller {
 	{
 		$this->load->model('table1');
 		$this->table1->col1 = "edit col val 13413413413";
-		$this->table1->col2 = "edit col val 2";
-		$this->table1->col3 = "edit col val 123";
+		$this->table1->col3 = "nuizoro222";
 		$this->table1->update_by_condition(['id'=>"1"]);
 	}
 	public function wheres(){
